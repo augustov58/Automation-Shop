@@ -1,6 +1,7 @@
 import './globals.css'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/react'
 import ClientLayout from './client-layout'
 
 // Primary heading font - Space Grotesk has a modern, slightly futuristic feel
@@ -63,7 +64,10 @@ export default function RootLayout({ children }) {
             {children}
           </main>
         </ClientLayout>
-        
+
+        {/* Vercel Analytics */}
+        <Analytics />
+
         {/* Preload critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
