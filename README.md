@@ -213,6 +213,43 @@ This Next.js app can be deployed to:
 3. **Logo** - Replace in `components/Header.js`
 4. **Content** - Update `app/page.js` and component files
 
+### Required Assets & Icons
+
+The application requires the following image assets in the `public/` directory for optimal SEO and branding:
+
+**Favicons & App Icons:**
+
+- `favicon.ico` - Standard favicon (32x32 or 16x16)
+- `favicon-16x16.png` - 16x16 PNG favicon
+- `apple-touch-icon.png` - 180x180 PNG for iOS home screen
+- `icon-192.png` - 192x192 PNG for PWA (Progressive Web App)
+- `icon-512.png` - 512x512 PNG for PWA
+
+**SEO & Social Media:**
+
+- `og-image.png` - 1200x630 PNG for Open Graph (social media previews)
+- `logo.png` - Your company logo for structured data
+
+**Optional Screenshots (for PWA):**
+
+- `screenshot-desktop.png` - 1280x720 desktop screenshot
+- `screenshot-mobile.png` - 750x1334 mobile screenshot
+
+**How to Generate Icons:**
+
+Use a tool like [Favicon.io](https://favicon.io/) or [RealFaviconGenerator](https://realfavicongenerator.net/) to generate all required sizes from a single image.
+
+```bash
+# Quick setup with placeholder images (for development)
+# These should be replaced with your actual branding
+touch public/favicon.ico
+touch public/apple-touch-icon.png
+touch public/icon-192.png
+touch public/icon-512.png
+touch public/og-image.png
+touch public/logo.png
+```
+
 ### Add New Pages
 
 ```bash

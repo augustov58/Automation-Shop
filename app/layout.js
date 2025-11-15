@@ -20,36 +20,118 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'AI Automation Shop',
-  description: 'Advanced AI automation solutions for businesses',
-  themeColor: '#0f172a',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://aiautomationshop.com'),
+  title: {
+    default: 'AI Automation Shop - Transform Your Business with AI',
+    template: '%s | AI Automation Shop',
+  },
+  description:
+    'Transform your business with cutting-edge AI automation solutions. Expert consulting, custom integrations, and AI-powered workflows that save time and boost productivity.',
+  keywords: [
+    'AI automation',
+    'business automation',
+    'AI solutions',
+    'workflow automation',
+    'AI consulting',
+    'machine learning',
+    'AI integration',
+    'process automation',
+    'intelligent automation',
+    'AI transformation',
+  ],
+  authors: [{ name: 'AI Automation Shop' }],
+  creator: 'AI Automation Shop',
+  publisher: 'AI Automation Shop',
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#38bdf8' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
+    shortcut: '/favicon-16x16.png',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ai-automation-shop.com',
-    title: 'AI Automation Shop',
-    description: 'Advanced AI automation solutions for businesses',
+    url: '/',
+    title: 'AI Automation Shop - Transform Your Business with AI',
+    description:
+      'Transform your business with cutting-edge AI automation solutions. Expert consulting, custom integrations, and AI-powered workflows.',
     siteName: 'AI Automation Shop',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Automation Shop - Transform Your Business with AI',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Automation Shop',
-    description: 'Advanced AI automation solutions for businesses',
+    title: 'AI Automation Shop - Transform Your Business with AI',
+    description:
+      'Transform your business with cutting-edge AI automation solutions. Expert consulting and custom integrations.',
+    images: ['/og-image.png'],
+    creator: '@aiautomationshop',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  category: 'technology',
 }
 
 export default function RootLayout({ children }) {
+  // Structured Data for SEO (JSON-LD)
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AI Automation Shop',
+    description: 'Advanced AI automation solutions for businesses',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://aiautomationshop.com',
+    logo: '/logo.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      availableLanguage: 'English',
+    },
+    sameAs: [
+      // Add your social media URLs here
+      // 'https://twitter.com/aiautomationshop',
+      // 'https://www.linkedin.com/company/aiautomationshop',
+      // 'https://www.facebook.com/aiautomationshop',
+    ],
+  }
+
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <meta name="format-detection" content="telephone=no" />
         <meta name="color-scheme" content="dark" />
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
