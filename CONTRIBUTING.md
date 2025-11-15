@@ -20,6 +20,7 @@ Thank you for your interest in contributing to AI Automation Shop! We welcome co
 This project adheres to a Code of Conduct that all contributors are expected to follow. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 
 **In short:**
+
 - Be respectful and inclusive
 - Welcome newcomers
 - Focus on constructive feedback
@@ -32,6 +33,7 @@ This project adheres to a Code of Conduct that all contributors are expected to 
 ### Prerequisites
 
 Ensure you have:
+
 - **Node.js** 18.x or higher
 - **npm** 10.x or higher
 - **Git** installed
@@ -214,16 +216,7 @@ export function Button({ children, loading, onClick, ...props }) {
 import { cn } from '@/lib/utils'
 
 export function Card({ className, children }) {
-  return (
-    <div
-      className={cn(
-        'rounded-lg border bg-card p-6 shadow-sm',
-        className
-      )}
-    >
-      {children}
-    </div>
-  )
+  return <div className={cn('rounded-lg border bg-card p-6 shadow-sm', className)}>{children}</div>
 }
 ```
 
@@ -383,28 +376,34 @@ docs(api): update API documentation
 
 ```markdown
 ## Description
+
 Brief description of what this PR does
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Changes Made
+
 - List key changes
 - Another change
 - etc.
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] E2E tests added/updated
 - [ ] Manual testing performed
 
 ## Screenshots (if applicable)
+
 Add screenshots for UI changes
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Comments added for complex code
@@ -413,6 +412,7 @@ Add screenshots for UI changes
 - [ ] Tests pass locally
 
 ## Related Issues
+
 Closes #123
 Related to #456
 ```
@@ -447,29 +447,36 @@ Include the following:
 
 ```markdown
 ## Description
+
 Clear description of the bug
 
 ## Steps to Reproduce
+
 1. Go to '...'
 2. Click on '...'
 3. See error
 
 ## Expected Behavior
+
 What should happen
 
 ## Actual Behavior
+
 What actually happens
 
 ## Screenshots
+
 If applicable
 
 ## Environment
+
 - OS: [e.g., macOS 14.0]
 - Browser: [e.g., Chrome 120]
 - Node.js: [e.g., 18.17.0]
 - npm: [e.g., 9.8.1]
 
 ## Additional Context
+
 Any other relevant information
 ```
 
@@ -479,18 +486,23 @@ Include the following:
 
 ```markdown
 ## Feature Description
+
 Clear description of the feature
 
 ## Problem it Solves
+
 What problem does this solve?
 
 ## Proposed Solution
+
 How would you implement this?
 
 ## Alternatives Considered
+
 Other ways to solve this
 
 ## Additional Context
+
 Mockups, examples, references
 ```
 
@@ -499,6 +511,7 @@ Mockups, examples, references
 ## 🏆 Recognition
 
 Contributors will be:
+
 - Listed in the project's contributors
 - Mentioned in release notes for significant contributions
 - Credited in the README for major features

@@ -34,6 +34,7 @@ This website showcases AI automation services and solutions:
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **[Next.js 14](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
@@ -41,16 +42,19 @@ This website showcases AI automation services and solutions:
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
 
 ### Testing
+
 - **[Jest](https://jestjs.io/)** - Unit & integration testing
 - **[React Testing Library](https://testing-library.com/react)** - Component testing
 - **[Playwright](https://playwright.dev/)** - E2E testing
 
 ### Development Tools
+
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[ESLint](https://eslint.org/)** - Code linting
 - **PostCSS** - CSS processing
 
 ### Deployment
+
 - **[Vercel](https://vercel.com/)** - Hosting & deployment
 
 ## 🚀 Getting Started
@@ -85,6 +89,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local` with your API keys (if needed):
+
 - Calendly API keys
 - Analytics IDs
 - Other third-party services
@@ -193,6 +198,7 @@ For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 ### Other Platforms
 
 This Next.js app can be deployed to:
+
 - **Netlify** - [Guide](https://docs.netlify.com/frameworks/next-js/)
 - **AWS Amplify** - [Guide](https://docs.amplify.aws/nextjs/)
 - **Railway** - [Guide](https://docs.railway.app/guides/nextjs)
@@ -241,12 +247,14 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 ### Common Issues
 
 **Port 3000 already in use:**
+
 ```bash
 # Kill the process or use a different port
 PORT=3001 npm run dev
 ```
 
 **Module not found errors:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json
@@ -254,6 +262,7 @@ npm install
 ```
 
 **Build failures:**
+
 ```bash
 # Check for TypeScript errors
 npm run build

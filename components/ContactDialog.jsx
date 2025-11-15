@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from 'react'
 import {
@@ -20,15 +20,15 @@ export default function ContactDialog({ trigger }) {
     message: '',
   })
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     // In a real application, you would handle form submission here
     console.log('Form submitted:', formData)
@@ -45,9 +45,7 @@ export default function ContactDialog({ trigger }) {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {trigger}
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-slate-800 border-slate-700">
         <DialogHeader>
           <DialogTitle className="text-xl text-white">Contact Us</DialogTitle>
@@ -70,7 +68,7 @@ export default function ContactDialog({ trigger }) {
               className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-white focus:border-white text-white"
             />
           </div>
-          
+
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">
               Email Address
@@ -85,7 +83,7 @@ export default function ContactDialog({ trigger }) {
               className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-white focus:border-white text-white"
             />
           </div>
-          
+
           <div>
             <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-1">
               Company Name
@@ -99,7 +97,7 @@ export default function ContactDialog({ trigger }) {
               className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-white focus:border-white text-white"
             />
           </div>
-          
+
           <div>
             <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-1">
               Service of Interest
@@ -120,7 +118,7 @@ export default function ContactDialog({ trigger }) {
               <option value="custom-solutions">Custom AI Solutions</option>
             </select>
           </div>
-          
+
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1">
               Your Message
@@ -134,7 +132,7 @@ export default function ContactDialog({ trigger }) {
               className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-white focus:border-white text-white"
             ></textarea>
           </div>
-          
+
           <DialogFooter>
             <button
               type="submit"
@@ -147,4 +145,4 @@ export default function ContactDialog({ trigger }) {
       </DialogContent>
     </Dialog>
   )
-} 
+}

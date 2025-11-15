@@ -170,6 +170,7 @@ npx playwright test --project=chromium
 ### Browser Configuration
 
 Playwright is configured to test on:
+
 - Desktop: Chromium, Firefox, WebKit
 - Mobile: Chrome (Pixel 5), Safari (iPhone 12)
 
@@ -182,6 +183,7 @@ Edit `playwright.config.js` to modify browser configurations.
 ### Component Testing Guidelines
 
 1. **Test user behavior, not implementation**
+
    ```javascript
    // ✅ Good - tests user-visible behavior
    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
@@ -191,16 +193,18 @@ Edit `playwright.config.js` to modify browser configurations.
    ```
 
 2. **Use semantic queries**
+
    ```javascript
    // Priority order:
-   screen.getByRole()         // Preferred
-   screen.getByLabelText()    // Forms
+   screen.getByRole() // Preferred
+   screen.getByLabelText() // Forms
    screen.getByPlaceholderText()
-   screen.getByText()         // Non-interactive elements
-   screen.getByTestId()       // Last resort
+   screen.getByText() // Non-interactive elements
+   screen.getByTestId() // Last resort
    ```
 
 3. **Test accessibility**
+
    ```javascript
    it('is keyboard accessible', () => {
      render(<MyComponent />)
@@ -230,6 +234,7 @@ Edit `playwright.config.js` to modify browser configurations.
    - Form submissions
 
 2. **Test across devices**
+
    ```javascript
    test('works on mobile', async ({ page }) => {
      await page.setViewportSize({ width: 375, height: 667 })
@@ -287,6 +292,7 @@ Coverage reports are generated in `/coverage` directory.
 ### Coverage Thresholds
 
 Current thresholds (configured in `jest.config.js`):
+
 - Branches: 50%
 - Functions: 50%
 - Lines: 50%
@@ -330,17 +336,21 @@ jobs:
 ### Common Issues
 
 **Jest tests failing with module import errors**
+
 - Ensure `jest.config.js` has correct `moduleNameMapper`
 - Check that `@/` path alias matches `tsconfig.json`
 
 **Playwright browser not found**
+
 - Run `npm run playwright:install`
 
 **Tests timeout**
+
 - Increase timeout in test file: `test.setTimeout(60000)`
 - Or in config: `timeout: 60 * 1000`
 
 **React hooks error in tests**
+
 - Ensure you're using `render()` from `@testing-library/react`
 - Mock `'use client'` directives if needed
 

@@ -4,9 +4,7 @@ import { newsletterSchema } from '@/lib/validations'
 import { rateLimit, rateLimitResponse } from '@/lib/rate-limit'
 import { z } from 'zod'
 
-const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 /**
  * POST /api/newsletter
@@ -38,7 +36,7 @@ export async function POST(request) {
           {
             success: true,
             message: 'Subscription received (development mode)',
-            email: validatedData.email
+            email: validatedData.email,
           },
           { status: 200 }
         )
@@ -47,7 +45,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Email service is not configured'
+          error: 'Email service is not configured',
         },
         { status: 500 }
       )
@@ -73,7 +71,7 @@ export async function POST(request) {
           <p><strong>Email:</strong> ${validatedData.email}</p>
           <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
         `,
-        text: `New Newsletter Subscription\nEmail: ${validatedData.email}\nDate: ${new Date().toLocaleString()}`
+        text: `New Newsletter Subscription\nEmail: ${validatedData.email}\nDate: ${new Date().toLocaleString()}`,
       })
     }
 
@@ -82,7 +80,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Failed to process subscription. Please try again later.'
+          error: 'Failed to process subscription. Please try again later.',
         },
         { status: 500 }
       )
@@ -92,11 +90,10 @@ export async function POST(request) {
       {
         success: true,
         message: 'Successfully subscribed to newsletter!',
-        emailId: emailResult.data?.id
+        emailId: emailResult.data?.id,
       },
       { status: 200 }
     )
-
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -105,8 +102,8 @@ export async function POST(request) {
           error: 'Invalid email address',
           details: error.errors.map(err => ({
             field: err.path.join('.'),
-            message: err.message
-          }))
+            message: err.message,
+          })),
         },
         { status: 400 }
       )
@@ -116,7 +113,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        error: 'An unexpected error occurred. Please try again later.'
+        error: 'An unexpected error occurred. Please try again later.',
       },
       { status: 500 }
     )

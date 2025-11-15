@@ -5,18 +5,18 @@ import { Analytics } from '@vercel/analytics/react'
 import ClientLayout from './client-layout'
 
 // Primary heading font - Space Grotesk has a modern, slightly futuristic feel
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
-  weight: ['300', '400', '500', '600', '700']
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 // Body text font - Inter provides excellent readability
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter'
+  variable: '--font-inter',
 })
 
 export const metadata = {
@@ -55,14 +55,15 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-black text-white antialiased">
         {/* Skip to content link for accessibility */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-black text-white px-4 py-2 rounded">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-black text-white px-4 py-2 rounded"
+        >
           Skip to content
         </a>
-        
+
         <ClientLayout>
-          <main id="main-content">
-            {children}
-          </main>
+          <main id="main-content">{children}</main>
         </ClientLayout>
 
         {/* Vercel Analytics */}
