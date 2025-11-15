@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-export default function CalendlyWidget({ url = "https://calendly.com/your-calendly-url" }) {
-  const [isLoading, setIsLoading] = useState(true);
+export default function CalendlyWidget({ url = 'https://calendly.com/your-calendly-url' }) {
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     // Initialize Calendly widget when component mounts
@@ -11,22 +11,22 @@ export default function CalendlyWidget({ url = "https://calendly.com/your-calend
       window.Calendly.initInlineWidget({
         url: url,
         parentElement: document.getElementById('calendly-inline-widget'),
-      });
-      
+      })
+
       // Add event listener for when Calendly is ready
-      const handleCalendlyEvent = (e) => {
+      const handleCalendlyEvent = e => {
         if (e.data.event && e.data.event.indexOf('calendly') === 0) {
-          setIsLoading(false);
+          setIsLoading(false)
         }
-      };
-      
-      window.addEventListener('message', handleCalendlyEvent);
-      
+      }
+
+      window.addEventListener('message', handleCalendlyEvent)
+
       return () => {
-        window.removeEventListener('message', handleCalendlyEvent);
-      };
+        window.removeEventListener('message', handleCalendlyEvent)
+      }
     }
-  }, [url]);
+  }, [url])
 
   return (
     <div className="relative">
@@ -35,12 +35,12 @@ export default function CalendlyWidget({ url = "https://calendly.com/your-calend
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[rgba(56,189,248,0.5)]"></div>
         </div>
       )}
-      <div 
+      <div
         id="calendly-inline-widget"
         className="calendly-inline-widget w-full"
         style={{ minHeight: '650px' }}
         data-auto-load="false"
       ></div>
     </div>
-  );
-} 
+  )
+}

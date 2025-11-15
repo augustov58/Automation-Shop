@@ -11,7 +11,9 @@ describe('Footer Component', () => {
 
   it('renders the company description', () => {
     render(<Footer />)
-    const description = screen.getByText(/Your trusted partner for AI-powered automation solutions/i)
+    const description = screen.getByText(
+      /Your trusted partner for AI-powered automation solutions/i
+    )
     expect(description).toBeInTheDocument()
   })
 

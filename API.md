@@ -21,6 +21,7 @@ All API endpoints are rate-limited to prevent abuse:
 - **Newsletter**: 3 requests per hour per IP
 
 Rate limit information is returned in response headers:
+
 - `X-RateLimit-Limit`: Maximum requests allowed
 - `X-RateLimit-Remaining`: Remaining requests in current window
 - `X-RateLimit-Reset`: Time when the rate limit resets (ISO 8601)
@@ -57,14 +58,14 @@ Content-Type: application/json
 
 #### Request Body Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | ✅ Yes | Full name (2-100 characters, letters only) |
-| `email` | string | ✅ Yes | Valid email address |
-| `phone` | string | ❌ No | Phone number (digits, spaces, +, -, (, ) allowed) |
-| `company` | string | ❌ No | Company name (2-100 characters) |
-| `service` | string | ❌ No | Service of interest: `ai-automation`, `consulting`, `integration`, `custom`, `other` |
-| `message` | string | ✅ Yes | Message content (10-5000 characters) |
+| Field     | Type   | Required | Description                                                                          |
+| --------- | ------ | -------- | ------------------------------------------------------------------------------------ |
+| `name`    | string | ✅ Yes   | Full name (2-100 characters, letters only)                                           |
+| `email`   | string | ✅ Yes   | Valid email address                                                                  |
+| `phone`   | string | ❌ No    | Phone number (digits, spaces, +, -, (, ) allowed)                                    |
+| `company` | string | ❌ No    | Company name (2-100 characters)                                                      |
+| `service` | string | ❌ No    | Service of interest: `ai-automation`, `consulting`, `integration`, `custom`, `other` |
+| `message` | string | ✅ Yes   | Message content (10-5000 characters)                                                 |
 
 #### Success Response
 
@@ -159,9 +160,9 @@ Content-Type: application/json
 
 #### Request Body Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `email` | string | ✅ Yes | Valid email address (5-255 characters) |
+| Field   | Type   | Required | Description                            |
+| ------- | ------ | -------- | -------------------------------------- |
+| `email` | string | ✅ Yes   | Valid email address (5-255 characters) |
 
 #### Success Response
 
@@ -278,12 +279,12 @@ See `.env.example` for complete configuration.
 
 ## Error Codes
 
-| Status Code | Description |
-|-------------|-------------|
-| 200 | Success |
-| 400 | Bad Request - Invalid input data |
-| 429 | Too Many Requests - Rate limit exceeded |
-| 500 | Internal Server Error - Server-side error |
+| Status Code | Description                               |
+| ----------- | ----------------------------------------- |
+| 200         | Success                                   |
+| 400         | Bad Request - Invalid input data          |
+| 429         | Too Many Requests - Rate limit exceeded   |
+| 500         | Internal Server Error - Server-side error |
 
 ---
 
@@ -302,6 +303,7 @@ headers: {
 ## Validation Rules
 
 ### Email Validation
+
 - Must be a valid email format
 - Min length: 5 characters
 - Max length: 255 characters
@@ -309,16 +311,19 @@ headers: {
 - Trimmed of whitespace
 
 ### Name Validation
+
 - Min length: 2 characters
 - Max length: 100 characters
 - Only letters, spaces, hyphens, and apostrophes allowed
 - Pattern: `/^[a-zA-Z\s'-]+$/`
 
 ### Phone Validation (Optional)
+
 - Only digits, spaces, +, -, (, ) allowed
 - Pattern: `/^[\d\s\-\+\(\)]+$/`
 
 ### Message Validation
+
 - Min length: 10 characters
 - Max length: 5000 characters
 - Trimmed of leading/trailing whitespace
@@ -338,7 +343,7 @@ headers: {
 ### Example React Implementation
 
 ```jsx
-const handleSubmit = async (data) => {
+const handleSubmit = async data => {
   try {
     const response = await fetch('/api/contact', {
       method: 'POST',
@@ -394,16 +399,20 @@ fetch('/api/contact', {
   body: JSON.stringify({
     name: 'Test User',
     email: 'test@example.com',
-    message: 'This is a test message.'
-  })
-}).then(r => r.json()).then(console.log)
+    message: 'This is a test message.',
+  }),
+})
+  .then(r => r.json())
+  .then(console.log)
 
 // Test newsletter
 fetch('/api/newsletter', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: 'test@example.com' })
-}).then(r => r.json()).then(console.log)
+  body: JSON.stringify({ email: 'test@example.com' }),
+})
+  .then(r => r.json())
+  .then(console.log)
 ```
 
 ---
@@ -424,6 +433,7 @@ Planned API improvements:
 ## Support
 
 For API issues or questions:
+
 - GitHub Issues: [Link to repo issues]
 - Email: dev@aiautomationshop.com
 - Documentation: [Link to docs]

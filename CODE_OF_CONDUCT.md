@@ -17,29 +17,29 @@ diverse, inclusive, and healthy community.
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* **Being respectful** of differing opinions, viewpoints, and experiences
-* **Giving and gracefully accepting** constructive feedback
-* **Accepting responsibility** and apologizing to those affected by our mistakes,
+- **Being respectful** of differing opinions, viewpoints, and experiences
+- **Giving and gracefully accepting** constructive feedback
+- **Accepting responsibility** and apologizing to those affected by our mistakes,
   and learning from the experience
-* **Focusing on what is best** not just for us as individuals, but for the
+- **Focusing on what is best** not just for us as individuals, but for the
   overall community
-* **Showing empathy** towards other community members
-* **Using welcoming and inclusive language**
-* **Being supportive** of newcomers and beginners
+- **Showing empathy** towards other community members
+- **Using welcoming and inclusive language**
+- **Being supportive** of newcomers and beginners
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or
+- The use of sexualized language or imagery, and sexual attention or
   advances of any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email
   address, without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional setting
-* Deliberately intimidating, stalking, or following
-* Unwanted photography or recording
-* Sustained disruption of talks or other events
+- Deliberately intimidating, stalking, or following
+- Unwanted photography or recording
+- Sustained disruption of talks or other events
 
 ## Enforcement Responsibilities
 
@@ -126,11 +126,11 @@ please report it by contacting the project team at
 
 When reporting, please include:
 
-* Your contact information
-* Names (real, nicknames, or pseudonyms) of any individuals involved
-* Your account of what occurred, and if you believe the incident is ongoing
-* If there is a publicly available record (e.g. a mailing list archive or a public IRC logger), please include a link
-* Any additional information that may be helpful
+- Your contact information
+- Names (real, nicknames, or pseudonyms) of any individuals involved
+- Your account of what occurred, and if you believe the incident is ongoing
+- If there is a publicly available record (e.g. a mailing list archive or a public IRC logger), please include a link
+- Any additional information that may be helpful
 
 After filing a report, a representative will contact you personally. The
 project team will then review the incident, follow up with any additional
