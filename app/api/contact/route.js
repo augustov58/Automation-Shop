@@ -5,9 +5,7 @@ import { rateLimit, rateLimitResponse } from '@/lib/rate-limit'
 import { z } from 'zod'
 
 // Initialize Resend with API key from environment variables
-const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 /**
  * POST /api/contact
@@ -42,7 +40,7 @@ export async function POST(request) {
           {
             success: true,
             message: 'Form received (development mode - email not sent)',
-            data: validatedData
+            data: validatedData,
           },
           { status: 200 }
         )
@@ -51,7 +49,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Email service is not configured'
+          error: 'Email service is not configured',
         },
         { status: 500 }
       )
@@ -73,7 +71,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Failed to send email. Please try again later.'
+          error: 'Failed to send email. Please try again later.',
         },
         { status: 500 }
       )
@@ -83,12 +81,11 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you for contacting us! We\'ll get back to you soon.',
-        emailId: emailResult.data?.id
+        message: "Thank you for contacting us! We'll get back to you soon.",
+        emailId: emailResult.data?.id,
       },
       { status: 200 }
     )
-
   } catch (error) {
     // Handle validation errors
     if (error instanceof z.ZodError) {
@@ -98,8 +95,8 @@ export async function POST(request) {
           error: 'Validation failed',
           details: error.errors.map(err => ({
             field: err.path.join('.'),
-            message: err.message
-          }))
+            message: err.message,
+          })),
         },
         { status: 400 }
       )
@@ -110,7 +107,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        error: 'An unexpected error occurred. Please try again later.'
+        error: 'An unexpected error occurred. Please try again later.',
       },
       { status: 500 }
     )
@@ -188,26 +185,38 @@ function generateEmailHTML(data) {
             <div class="value"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></div>
           </div>
 
-          ${data.phone ? `
+          ${
+            data.phone
+              ? `
             <div class="field">
               <div class="label">Phone:</div>
               <div class="value"><a href="tel:${escapeHtml(data.phone)}">${escapeHtml(data.phone)}</a></div>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
 
-          ${data.company ? `
+          ${
+            data.company
+              ? `
             <div class="field">
               <div class="label">Company:</div>
               <div class="value">${escapeHtml(data.company)}</div>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
 
-          ${data.service ? `
+          ${
+            data.service
+              ? `
             <div class="field">
               <div class="label">Service of Interest:</div>
               <div class="value">${formatService(data.service)}</div>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
 
           <div class="field">
             <div class="label">Message:</div>
@@ -218,7 +227,7 @@ function generateEmailHTML(data) {
         <div class="footer">
           <p>Received on ${new Date().toLocaleString('en-US', {
             dateStyle: 'full',
-            timeStyle: 'short'
+            timeStyle: 'short',
           })}</p>
         </div>
       </body>
@@ -230,7 +239,7 @@ function generateEmailHTML(data) {
  * Generate plain text email content
  */
 function generateEmailText(data) {
-  let text = `
+  const text = `
 NEW CONTACT FORM SUBMISSION
 AI Automation Shop
 
@@ -258,7 +267,7 @@ function escapeHtml(text) {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '&#039;',
   }
   return text.replace(/[&<>"']/g, m => map[m])
 }
@@ -269,10 +278,10 @@ function escapeHtml(text) {
 function formatService(service) {
   const serviceMap = {
     'ai-automation': 'AI Automation',
-    'consulting': 'Consulting',
-    'integration': 'Integration',
-    'custom': 'Custom Solution',
-    'other': 'Other'
+    consulting: 'Consulting',
+    integration: 'Integration',
+    custom: 'Custom Solution',
+    other: 'Other',
   }
   return serviceMap[service] || service
 }

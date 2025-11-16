@@ -22,7 +22,7 @@ export default function NewsletterForm({ className }) {
     resolver: zodResolver(newsletterSchema),
   })
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
@@ -79,9 +79,7 @@ export default function NewsletterForm({ className }) {
               placeholder="Enter your email"
               disabled={isSubmitting}
             />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
-            )}
+            {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
           </div>
 
           <button

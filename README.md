@@ -34,6 +34,7 @@ This website showcases AI automation services and solutions:
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **[Next.js 14](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
@@ -41,16 +42,19 @@ This website showcases AI automation services and solutions:
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
 
 ### Testing
+
 - **[Jest](https://jestjs.io/)** - Unit & integration testing
 - **[React Testing Library](https://testing-library.com/react)** - Component testing
 - **[Playwright](https://playwright.dev/)** - E2E testing
 
 ### Development Tools
+
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[ESLint](https://eslint.org/)** - Code linting
 - **PostCSS** - CSS processing
 
 ### Deployment
+
 - **[Vercel](https://vercel.com/)** - Hosting & deployment
 
 ## 🚀 Getting Started
@@ -85,6 +89,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local` with your API keys (if needed):
+
 - Calendly API keys
 - Analytics IDs
 - Other third-party services
@@ -193,6 +198,7 @@ For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 ### Other Platforms
 
 This Next.js app can be deployed to:
+
 - **Netlify** - [Guide](https://docs.netlify.com/frameworks/next-js/)
 - **AWS Amplify** - [Guide](https://docs.amplify.aws/nextjs/)
 - **Railway** - [Guide](https://docs.railway.app/guides/nextjs)
@@ -206,6 +212,43 @@ This Next.js app can be deployed to:
 2. **Fonts** - Modify `app/layout.js`
 3. **Logo** - Replace in `components/Header.js`
 4. **Content** - Update `app/page.js` and component files
+
+### Required Assets & Icons
+
+The application requires the following image assets in the `public/` directory for optimal SEO and branding:
+
+**Favicons & App Icons:**
+
+- `favicon.ico` - Standard favicon (32x32 or 16x16)
+- `favicon-16x16.png` - 16x16 PNG favicon
+- `apple-touch-icon.png` - 180x180 PNG for iOS home screen
+- `icon-192.png` - 192x192 PNG for PWA (Progressive Web App)
+- `icon-512.png` - 512x512 PNG for PWA
+
+**SEO & Social Media:**
+
+- `og-image.png` - 1200x630 PNG for Open Graph (social media previews)
+- `logo.png` - Your company logo for structured data
+
+**Optional Screenshots (for PWA):**
+
+- `screenshot-desktop.png` - 1280x720 desktop screenshot
+- `screenshot-mobile.png` - 750x1334 mobile screenshot
+
+**How to Generate Icons:**
+
+Use a tool like [Favicon.io](https://favicon.io/) or [RealFaviconGenerator](https://realfavicongenerator.net/) to generate all required sizes from a single image.
+
+```bash
+# Quick setup with placeholder images (for development)
+# These should be replaced with your actual branding
+touch public/favicon.ico
+touch public/apple-touch-icon.png
+touch public/icon-192.png
+touch public/icon-512.png
+touch public/og-image.png
+touch public/logo.png
+```
 
 ### Add New Pages
 
@@ -241,12 +284,14 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 ### Common Issues
 
 **Port 3000 already in use:**
+
 ```bash
 # Kill the process or use a different port
 PORT=3001 npm run dev
 ```
 
 **Module not found errors:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json
@@ -254,6 +299,7 @@ npm install
 ```
 
 **Build failures:**
+
 ```bash
 # Check for TypeScript errors
 npm run build

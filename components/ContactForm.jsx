@@ -23,7 +23,7 @@ export default function ContactForm({ className }) {
     resolver: zodResolver(contactFormSchema),
   })
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
@@ -41,7 +41,7 @@ export default function ContactForm({ className }) {
       if (response.ok && result.success) {
         setSubmitStatus({
           type: 'success',
-          message: result.message || 'Thank you for contacting us! We\'ll get back to you soon.',
+          message: result.message || "Thank you for contacting us! We'll get back to you soon.",
         })
         reset() // Clear form on success
       } else {
@@ -62,16 +62,10 @@ export default function ContactForm({ className }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={cn('space-y-6', className)}
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className={cn('space-y-6', className)}>
       {/* Name Field */}
       <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
           Name <span className="text-red-500">*</span>
         </label>
         <input
@@ -89,17 +83,12 @@ export default function ContactForm({ className }) {
           placeholder="John Doe"
           disabled={isSubmitting}
         />
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
       </div>
 
       {/* Email Field */}
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
           Email <span className="text-red-500">*</span>
         </label>
         <input
@@ -117,17 +106,12 @@ export default function ContactForm({ className }) {
           placeholder="john@example.com"
           disabled={isSubmitting}
         />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
       </div>
 
       {/* Phone Field (Optional) */}
       <div>
-        <label
-          htmlFor="phone"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
           Phone Number
         </label>
         <input
@@ -145,17 +129,12 @@ export default function ContactForm({ className }) {
           placeholder="+1 (555) 000-0000"
           disabled={isSubmitting}
         />
-        {errors.phone && (
-          <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
-        )}
+        {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>}
       </div>
 
       {/* Company Field (Optional) */}
       <div>
-        <label
-          htmlFor="company"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
           Company Name
         </label>
         <input
@@ -173,17 +152,12 @@ export default function ContactForm({ className }) {
           placeholder="Acme Corp"
           disabled={isSubmitting}
         />
-        {errors.company && (
-          <p className="mt-1 text-sm text-red-500">{errors.company.message}</p>
-        )}
+        {errors.company && <p className="mt-1 text-sm text-red-500">{errors.company.message}</p>}
       </div>
 
       {/* Service Selection (Optional) */}
       <div>
-        <label
-          htmlFor="service"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
           Service of Interest
         </label>
         <select
@@ -206,17 +180,12 @@ export default function ContactForm({ className }) {
           <option value="custom">Custom Solution</option>
           <option value="other">Other</option>
         </select>
-        {errors.service && (
-          <p className="mt-1 text-sm text-red-500">{errors.service.message}</p>
-        )}
+        {errors.service && <p className="mt-1 text-sm text-red-500">{errors.service.message}</p>}
       </div>
 
       {/* Message Field */}
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-gray-300 mb-2"
-        >
+        <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
           Message <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -234,9 +203,7 @@ export default function ContactForm({ className }) {
           placeholder="Tell us about your project or inquiry..."
           disabled={isSubmitting}
         />
-        {errors.message && (
-          <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
-        )}
+        {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>}
       </div>
 
       {/* Submit Status Messages */}

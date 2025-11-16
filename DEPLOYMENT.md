@@ -39,6 +39,7 @@ Vercel will automatically detect your Next.js project and configure:
 ### Step 5: View Your Live Site
 
 After deployment completes, you'll see:
+
 - ✅ **Live URL**: `https://automation-shop-xxxx.vercel.app`
 - 🎨 **Screenshot preview** of your deployed site
 - 📊 **Deployment details** and logs
@@ -151,11 +152,13 @@ Vercel offers free analytics:
 ### Build Fails
 
 **Check build logs:**
+
 1. Go to deployment details
 2. Click **"Build Logs"**
 3. Look for error messages
 
 **Common fixes:**
+
 - Ensure `package.json` has correct dependencies
 - Run `npm run build` locally to test
 - Check for TypeScript errors
@@ -163,6 +166,7 @@ Vercel offers free analytics:
 ### Site Not Updating
 
 **Force a new deployment:**
+
 ```bash
 # Via CLI
 vercel --prod --force

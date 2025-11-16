@@ -53,6 +53,7 @@ This document provides a comprehensive overview of the AI Automation Shop archit
 ### Technology Stack
 
 #### Frontend Framework
+
 - **Next.js 14** with App Router
   - Server-side rendering (SSR)
   - Static site generation (SSG)
@@ -61,12 +62,14 @@ This document provides a comprehensive overview of the AI Automation Shop archit
   - Code splitting
 
 #### UI Libraries
+
 - **React 18** - Component library
 - **Tailwind CSS** - Utility-first styling
 - **Framer Motion** - Animation library
 - **Radix UI** - Accessible primitives
 
 #### Development
+
 - **TypeScript** - Type safety
 - **ESLint** - Code quality
 - **Jest** - Unit testing
@@ -157,14 +160,12 @@ Automation-Shop/
 #### 1. Presentational vs Container Components
 
 **Presentational** (Dumb components):
+
 ```jsx
 // Presentational - Pure UI, no logic
 export function Button({ children, onClick, variant }) {
   return (
-    <button
-      onClick={onClick}
-      className={cn('btn', `btn-${variant}`)}
-    >
+    <button onClick={onClick} className={cn('btn', `btn-${variant}`)}>
       {children}
     </button>
   )
@@ -172,13 +173,14 @@ export function Button({ children, onClick, variant }) {
 ```
 
 **Container** (Smart components):
+
 ```jsx
 // Container - Handles logic, data fetching
 export function ContactForm() {
   const [formData, setFormData] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     // Handle form logic
   }
 
@@ -258,12 +260,14 @@ App
 ### Component Types
 
 #### Server Components (Default in Next.js 14)
+
 - Static content
 - Data fetching
 - SEO metadata
 - No interactivity
 
 #### Client Components (`'use client'`)
+
 - Interactive features
 - Browser APIs
 - Event handlers
@@ -311,18 +315,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#38BDF8',    // Sky blue
-        secondary: '#8B5CF6',  // Purple
-        accent: '#F97316',     // Orange
+        primary: '#38BDF8', // Sky blue
+        secondary: '#8B5CF6', // Purple
+        accent: '#F97316', // Orange
       },
       spacing: {
         // Custom spacing scale
       },
       animation: {
         // Custom animations
-      }
-    }
-  }
+      },
+    },
+  },
 }
 ```
 
@@ -386,7 +390,7 @@ export function cn(...inputs) {
 }
 
 // Usage
-cn('px-2', 'px-4')  // Result: 'px-4' (last one wins)
+cn('px-2', 'px-4') // Result: 'px-4' (last one wins)
 ```
 
 ---
@@ -442,7 +446,7 @@ app/
 import Link from 'next/link'
 
 // Client-side navigation (no page reload)
-<Link href="/about">About Us</Link>
+;<Link href="/about">About Us</Link>
 
 // Programmatic navigation
 import { useRouter } from 'next/navigation'
@@ -458,13 +462,12 @@ router.push('/about')
 
 ```jsx
 import Image from 'next/image'
-
-<Image
+;<Image
   src="/hero.jpg"
   alt="Hero"
   width={800}
   height={400}
-  priority  // For above-the-fold images
+  priority // For above-the-fold images
   placeholder="blur"
 />
 ```
@@ -472,6 +475,7 @@ import Image from 'next/image'
 ### 2. Code Splitting
 
 Automatic in Next.js:
+
 - Each route is a separate bundle
 - Components are lazy-loaded
 
@@ -482,7 +486,7 @@ import dynamic from 'next/dynamic'
 
 const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
   loading: () => <Spinner />,
-  ssr: false  // Client-side only
+  ssr: false, // Client-side only
 })
 ```
 
@@ -503,7 +507,7 @@ Using Framer Motion with GPU acceleration:
 <motion.div
   animate={{ x: 100 }}
   transition={{ type: 'spring' }}
-  style={{ willChange: 'transform' }}  // GPU hint
+  style={{ willChange: 'transform' }} // GPU hint
 />
 ```
 
@@ -605,6 +609,7 @@ test('user can navigate to contact', async ({ page }) => {
 ### Environment Variables
 
 Managed in Vercel dashboard:
+
 - Development
 - Preview (branch deployments)
 - Production
