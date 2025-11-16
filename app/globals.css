@@ -102,6 +102,19 @@ body {
   50% { opacity: 0.8; }
 }
 
+/* Loading bar animation (progress indicator) */
+@keyframes loading-bar {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(0.7);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 /* Enhanced particle animations */
 .particle {
   position: absolute;
