@@ -729,10 +729,46 @@ body {
   top: 0;
 }
 
-/* Focus visible styles */
+/* ============================================================================
+   FOCUS STATES - Enhanced for Accessibility
+   ============================================================================ */
+
+/* Base focus-visible style */
 *:focus-visible {
-  outline: 2px solid rgba(var(--color-primary), 0.8);
-  outline-offset: 2px;
+  outline: 3px solid rgba(var(--color-primary), 0.9);
+  outline-offset: 3px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Enhanced focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(var(--color-primary), 1);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(var(--color-primary), 0.2);
+}
+
+/* Focus within - for containers */
+*:focus-within {
+  /* Container gains subtle highlight when child has focus */
+}
+
+/* Keyboard-only focus (no mouse) */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* High contrast focus for critical actions */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow:
+    0 0 0 6px rgba(var(--color-primary), 0.3),
+    0 0 20px rgba(var(--color-primary), 0.5);
 }
 
 /* ============================================================================

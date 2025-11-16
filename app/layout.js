@@ -136,16 +136,18 @@ export default function RootLayout({ children }) {
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="bg-black text-white antialiased">
-        {/* Skip to content link for accessibility */}
+        {/* Skip to content link for accessibility - Enhanced with glass morphism */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-black text-white px-4 py-2 rounded"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[var(--z-tooltip)] glass-card px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 focus:ring-4 focus:ring-primary-400/50 focus:outline-none"
         >
-          Skip to content
+          Skip to main content
         </a>
 
         <ClientLayout>
-          <main id="main-content">{children}</main>
+          <main id="main-content" role="main" aria-label="Main content">
+            {children}
+          </main>
         </ClientLayout>
 
         {/* Vercel Analytics */}

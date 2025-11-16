@@ -22,6 +22,8 @@ export default function Header() {
         isScrolled ? 'glass-header shadow-lg' : 'bg-transparent border-b border-white/5'
       }`}
       style={{ zIndex: 'var(--z-fixed)' }}
+      role="banner"
+      aria-label="Site header"
     >
       {/* Subtle glow effect on scroll */}
       {isScrolled && (
@@ -44,11 +46,13 @@ export default function Header() {
             />
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Min 44px touch target */}
           <button
-            className="block md:hidden text-white hover:text-primary-400 focus:outline-none transition-colors relative group"
+            className="block md:hidden text-white hover:text-primary-400 focus:outline-none transition-colors relative group min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <div className="absolute inset-0 bg-primary-500/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
             <svg
@@ -77,7 +81,11 @@ export default function Header() {
           </button>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-8 items-center">
+          <nav
+            className="hidden md:flex space-x-8 items-center"
+            role="navigation"
+            aria-label="Main navigation"
+          >
             <a
               href="#services"
               className="text-slate-200 hover:text-primary-400 transition-colors relative group font-medium"
@@ -130,25 +138,32 @@ export default function Header() {
 
         {/* Mobile navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10 animate-slide-up">
-            <nav className="flex flex-col space-y-4">
+          <div
+            className="md:hidden py-4 border-t border-white/10 animate-slide-up"
+            id="mobile-navigation"
+          >
+            <nav
+              className="flex flex-col space-y-4"
+              role="navigation"
+              aria-label="Mobile navigation"
+            >
               <a
                 href="#services"
-                className="text-slate-200 hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-white/5"
+                className="text-slate-200 hover:text-primary-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5 min-h-[44px] flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </a>
               <a
                 href="#about"
-                className="text-slate-200 hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-white/5"
+                className="text-slate-200 hover:text-primary-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5 min-h-[44px] flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
               </a>
               <a
                 href="#contact"
-                className="text-slate-200 hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-white/5"
+                className="text-slate-200 hover:text-primary-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5 min-h-[44px] flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
