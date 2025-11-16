@@ -19,10 +19,10 @@ describe('Footer Component', () => {
 
   it('renders all social media icons', () => {
     const { container } = render(<Footer />)
-    const socialLinks = container.querySelectorAll('a[href="#"]')
+    const socialLinks = container.querySelectorAll('a[aria-label]')
 
-    // Should have 3 social media links (Facebook, Twitter, LinkedIn)
-    expect(socialLinks.length).toBeGreaterThanOrEqual(3)
+    // Should have 4 social media links (Facebook, Twitter, LinkedIn, GitHub)
+    expect(socialLinks.length).toBeGreaterThanOrEqual(4)
   })
 
   it('renders Quick Links section', () => {
@@ -70,33 +70,49 @@ describe('Footer Component', () => {
     const homeLink = screen.getByText('Home').closest('a')
     expect(homeLink).toHaveAttribute('href', '#')
 
+    // For Services, About Us, and Contact, find the link element
     const servicesLinks = screen.getAllByText('Services')
-    const servicesLinkElement = servicesLinks.find(link => link.tagName === 'A')
-    expect(servicesLinkElement).toHaveAttribute('href', '#services')
+    servicesLinks.forEach(link => {
+      const anchor = link.closest('a')
+      if (anchor) {
+        expect(anchor).toHaveAttribute('href', '#services')
+      }
+    })
 
     const aboutLinks = screen.getAllByText('About Us')
-    const aboutLinkElement = aboutLinks.find(link => link.tagName === 'A')
-    expect(aboutLinkElement).toHaveAttribute('href', '#about')
+    aboutLinks.forEach(link => {
+      const anchor = link.closest('a')
+      if (anchor) {
+        expect(anchor).toHaveAttribute('href', '#about')
+      }
+    })
 
     const contactLinks = screen.getAllByText('Contact')
-    const contactLinkElement = contactLinks.find(link => link.tagName === 'A')
-    expect(contactLinkElement).toHaveAttribute('href', '#contact')
+    contactLinks.forEach(link => {
+      const anchor = link.closest('a')
+      if (anchor) {
+        expect(anchor).toHaveAttribute('href', '#contact')
+      }
+    })
   })
 
   it('has correct footer styling', () => {
     const { container } = render(<Footer />)
     const footer = container.querySelector('footer')
 
-    expect(footer).toHaveClass('bg-slate-800')
-    expect(footer).toHaveClass('text-white')
+    // Updated to match new glass morphism design
+    expect(footer).toHaveClass('bg-black')
+    expect(footer).toHaveClass('border-t')
+    expect(footer).toHaveClass('overflow-hidden')
   })
 
-  it('renders three main columns in grid layout', () => {
+  it('renders four main columns in grid layout', () => {
     const { container } = render(<Footer />)
     const gridContainer = container.querySelector('.grid')
 
     expect(gridContainer).toHaveClass('grid-cols-1')
-    expect(gridContainer).toHaveClass('md:grid-cols-3')
+    // Updated to match new 4-column layout
+    expect(gridContainer).toHaveClass('md:grid-cols-4')
   })
 
   it('contact info includes SVG icons', () => {
@@ -106,5 +122,44 @@ describe('Footer Component', () => {
 
     // Should have 3 icons (location, email, phone)
     expect(icons.length).toBe(3)
+  })
+
+  it('has gradient text on company name', () => {
+    render(<Footer />)
+    const companyName = screen.getByText('AI Automation Shop')
+
+    // Check for gradient text classes
+    expect(companyName).toHaveClass('bg-gradient-to-r')
+    expect(companyName).toHaveClass('from-primary-400')
+    expect(companyName).toHaveClass('to-secondary-400')
+  })
+
+  it('renders privacy and legal links', () => {
+    render(<Footer />)
+
+    expect(screen.getByText('Privacy Policy')).toBeInTheDocument()
+    expect(screen.getByText('Terms of Service')).toBeInTheDocument()
+    expect(screen.getByText('Cookie Policy')).toBeInTheDocument()
+  })
+
+  it('renders built with badge', () => {
+    render(<Footer />)
+
+    expect(screen.getByText(/Built with/i)).toBeInTheDocument()
+    expect(screen.getByText(/Next.js & AI/i)).toBeInTheDocument()
+  })
+
+  it('has background gradient effects', () => {
+    const { container } = render(<Footer />)
+    const footer = container.querySelector('footer')
+
+    // Check that footer is relative positioned for absolute children
+    expect(footer).toHaveClass('relative')
+
+    // Check for background gradient divs
+    const gradients = footer.querySelectorAll(
+      '.absolute.bg-gradient-to-b, .absolute.bg-primary-500\\/5'
+    )
+    expect(gradients.length).toBeGreaterThan(0)
   })
 })
