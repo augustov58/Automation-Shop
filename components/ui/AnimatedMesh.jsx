@@ -122,7 +122,7 @@ export function FloatingShapes({ count = 8, className = '' }) {
   const shapesRef = useRef(null)
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       if (!shapesRef.current) return
 
       const shapes = shapesRef.current.querySelectorAll('.floating-shape')
@@ -142,7 +142,10 @@ export function FloatingShapes({ count = 8, className = '' }) {
   }, [])
 
   return (
-    <div ref={shapesRef} className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+    <div
+      ref={shapesRef}
+      className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+    >
       {Array.from({ length: count }).map((_, i) => {
         const size = Math.random() * 100 + 50
         const top = Math.random() * 100
@@ -246,9 +249,9 @@ export function ParticleField({ count = 50, className = '' }) {
       })
     }
 
-    let mouse = { x: canvas.width / 2, y: canvas.height / 2 }
+    const mouse = { x: canvas.width / 2, y: canvas.height / 2 }
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       mouse.x = e.clientX
       mouse.y = e.clientY
     }

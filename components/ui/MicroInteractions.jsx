@@ -12,7 +12,7 @@ export function RippleButton({ children, onClick, className, variant = 'primary'
   const [ripples, setRipples] = useState([])
   const buttonRef = useRef(null)
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (!buttonRef.current) return
 
     const rect = buttonRef.current.getBoundingClientRect()
@@ -25,11 +25,11 @@ export function RippleButton({ children, onClick, className, variant = 'primary'
       id: Date.now(),
     }
 
-    setRipples((prev) => [...prev, ripple])
+    setRipples(prev => [...prev, ripple])
 
     // Remove ripple after animation
     setTimeout(() => {
-      setRipples((prev) => prev.filter((r) => r.id !== ripple.id))
+      setRipples(prev => prev.filter(r => r.id !== ripple.id))
     }, 600)
 
     onClick?.(e)
@@ -45,17 +45,13 @@ export function RippleButton({ children, onClick, className, variant = 'primary'
     <button
       ref={buttonRef}
       onClick={handleClick}
-      className={cn(
-        'relative overflow-hidden',
-        variants[variant],
-        className
-      )}
+      className={cn('relative overflow-hidden', variants[variant], className)}
       {...props}
     >
       {children}
 
       {/* Ripple animations */}
-      {ripples.map((ripple) => (
+      {ripples.map(ripple => (
         <span
           key={ripple.id}
           className="absolute rounded-full bg-white/30 animate-ripple pointer-events-none"
@@ -79,7 +75,7 @@ export function MagneticButton({ children, strength = 0.5, className, ...props }
   const buttonRef = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = e => {
     if (!buttonRef.current) return
 
     const rect = buttonRef.current.getBoundingClientRect()
@@ -119,7 +115,7 @@ export function GlowButton({ children, className, glowColor = 'primary', ...prop
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const buttonRef = useRef(null)
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = e => {
     if (!buttonRef.current) return
 
     const rect = buttonRef.current.getBoundingClientRect()
@@ -175,11 +171,7 @@ export function ProgressButton({
     <button
       onClick={onClick}
       disabled={loading}
-      className={cn(
-        'btn-primary relative overflow-hidden',
-        loading && 'cursor-wait',
-        className
-      )}
+      className={cn('btn-primary relative overflow-hidden', loading && 'cursor-wait', className)}
       {...props}
     >
       {/* Progress bar */}
@@ -216,7 +208,7 @@ export function AnimatedCounter({ value, duration = 2, prefix = '', suffix = '',
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         if (entries[0].isIntersecting) {
           let start = 0
           const end = parseInt(value)
@@ -258,13 +250,7 @@ export function AnimatedCounter({ value, duration = 2, prefix = '', suffix = '',
  * Reveal on Scroll
  * Container that reveals children with animation when scrolled into view
  */
-export function RevealOnScroll({
-  children,
-  direction = 'up',
-  delay = 0,
-  className,
-  once = true,
-}) {
+export function RevealOnScroll({ children, direction = 'up', delay = 0, className, once = true }) {
   const directions = {
     up: { y: 50 },
     down: { y: -50 },

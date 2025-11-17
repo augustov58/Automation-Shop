@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useAnimation, PanInfo } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 /**
@@ -14,7 +14,7 @@ export function SwipeCarousel({ children, className, onSlideChange }) {
   const slideCount = Array.isArray(children) ? children.length : 1
 
   const slideVariants = {
-    enter: (direction) => ({
+    enter: direction => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
     }),
@@ -23,7 +23,7 @@ export function SwipeCarousel({ children, className, onSlideChange }) {
       x: 0,
       opacity: 1,
     },
-    exit: (direction) => ({
+    exit: direction => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
@@ -35,7 +35,7 @@ export function SwipeCarousel({ children, className, onSlideChange }) {
     return Math.abs(offset) * velocity
   }
 
-  const paginate = (newDirection) => {
+  const paginate = newDirection => {
     const newSlide = currentSlide + newDirection
     if (newSlide >= 0 && newSlide < slideCount) {
       setDirection(newDirection)
@@ -88,9 +88,7 @@ export function SwipeCarousel({ children, className, onSlideChange }) {
             }}
             className={cn(
               'w-2 h-2 rounded-full transition-all duration-300',
-              index === currentSlide
-                ? 'bg-primary-400 w-8'
-                : 'bg-white/30 hover:bg-white/50'
+              index === currentSlide ? 'bg-primary-400 w-8' : 'bg-white/30 hover:bg-white/50'
             )}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -105,7 +103,6 @@ export function SwipeCarousel({ children, className, onSlideChange }) {
  * Mobile drawer that slides up from bottom
  */
 export function BottomSheet({ children, isOpen, onClose, className }) {
-  const [isDragging, setIsDragging] = useState(false)
   const controls = useAnimation()
 
   useEffect(() => {
@@ -116,9 +113,7 @@ export function BottomSheet({ children, isOpen, onClose, className }) {
     }
   }, [isOpen, controls])
 
-  const handleDragEnd = (e, info) => {
-    setIsDragging(false)
-
+  const handleDragEnd = (_e, info) => {
     if (info.offset.y > 100 || info.velocity.y > 500) {
       onClose()
     } else {
@@ -144,7 +139,6 @@ export function BottomSheet({ children, isOpen, onClose, className }) {
         drag="y"
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={0.2}
-        onDragStart={() => setIsDragging(true)}
         onDragEnd={handleDragEnd}
         animate={controls}
         initial={{ y: '100%' }}
@@ -179,15 +173,7 @@ export function ResponsiveContainer({ children, className, size = 'default' }) {
   }
 
   return (
-    <div
-      className={cn(
-        'mx-auto px-4 sm:px-6 lg:px-8',
-        sizes[size],
-        className
-      )}
-    >
-      {children}
-    </div>
+    <div className={cn('mx-auto px-4 sm:px-6 lg:px-8', sizes[size], className)}>{children}</div>
   )
 }
 
@@ -195,14 +181,15 @@ export function ResponsiveContainer({ children, className, size = 'default' }) {
  * Responsive Grid
  * Automatically responsive grid system
  */
-export function ResponsiveGrid({ children, columns = { mobile: 1, tablet: 2, desktop: 3 }, gap = 6, className }) {
+export function ResponsiveGrid({
+  children,
+  columns = { mobile: 1, tablet: 2, desktop: 3 },
+  gap = 6,
+  className,
+}) {
   const gridClasses = `grid gap-${gap} grid-cols-${columns.mobile} md:grid-cols-${columns.tablet} lg:grid-cols-${columns.desktop}`
 
-  return (
-    <div className={cn(gridClasses, className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn(gridClasses, className)}>{children}</div>
 }
 
 /**
@@ -249,13 +236,16 @@ export function MobileMenu({ isOpen, onClose, children }) {
           aria-label="Close menu"
         >
           <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
-        <div className="p-6 pt-16">
-          {children}
-        </div>
+        <div className="p-6 pt-16">{children}</div>
       </motion.div>
     </>
   )
@@ -322,13 +312,13 @@ export function PullToRefresh({ onRefresh, threshold = 80, children, className }
   const [isRefreshing, setIsRefreshing] = useState(false)
   const startY = useRef(0)
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = e => {
     if (window.scrollY === 0) {
       startY.current = e.touches[0].clientY
     }
   }
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = e => {
     if (window.scrollY === 0 && !isRefreshing) {
       const currentY = e.touches[0].clientY
       const distance = currentY - startY.current
@@ -372,8 +362,18 @@ export function PullToRefresh({ onRefresh, threshold = 80, children, className }
             animate={{ rotate: pullDistance >= threshold ? 180 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <svg className="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            <svg
+              className="h-6 w-6 text-primary-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
             </svg>
           </motion.div>
         )}

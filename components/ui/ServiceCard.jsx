@@ -30,7 +30,7 @@ export default function ServiceCard({
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), springConfig)
 
   // Handle mouse move for tilt effect
-  const handleMouseMove = (e) => {
+  const handleMouseMove = e => {
     if (!cardRef.current) return
 
     const rect = cardRef.current.getBoundingClientRect()
@@ -106,7 +106,10 @@ export default function ServiceCard({
         />
 
         {/* Icon with glow */}
-        <div className="relative mb-6 flex justify-center" style={{ transform: 'translateZ(50px)' }}>
+        <div
+          className="relative mb-6 flex justify-center"
+          style={{ transform: 'translateZ(50px)' }}
+        >
           <div className="relative">
             {/* Glow effect */}
             <div
@@ -193,7 +196,10 @@ export function ServiceGrid({ children, className, columns = 3 }) {
   }
 
   return (
-    <div className={cn('grid gap-8', gridCols[columns], className)} style={{ perspective: '1000px' }}>
+    <div
+      className={cn('grid gap-8', gridCols[columns], className)}
+      style={{ perspective: '1000px' }}
+    >
       {children}
     </div>
   )
@@ -229,7 +235,7 @@ export function FlipServiceCard({ front, back, index = 0, className }) {
       onClick={() => setIsFlipped(!isFlipped)}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && setIsFlipped(!isFlipped)}
+      onKeyDown={e => e.key === 'Enter' && setIsFlipped(!isFlipped)}
     >
       <motion.div
         className="relative w-full h-full"
